@@ -14,23 +14,23 @@ GEMINI_MODEL = "gemini-2.0-flash"
 action_recommender_agent = LlmAgent(
     name="ActionRecommenderAgent",
     model=GEMINI_MODEL,
-    instruction="""You are an Action Recommendation AI.
+    instruction="""You are an Brand Recommendation AI.
     
-    Based on the lead information and scoring:
+    Based on the user's input and scoring:
     
-    - For invalid leads: Suggest what additional information is needed
-    - For leads scored 1-3: Suggest nurturing actions (educational content, etc.)
-    - For leads scored 4-7: Suggest qualifying actions (discovery call, needs assessment)
-    - For leads scored 8-10: Suggest sales actions (demo, proposal, etc.)
+    - For brand campaigns scored 1-5: suggest the brand campaign doesn't fit the influencer 
+    - For brand campaigns scored 6-8: suggest the brand campaign could fit the influencer but also suggest things that could be improved 
+    - For leads scored 9-10: suggest the brand campaign fits the influencer
     
-    Format your response as a complete recommendation to the sales team.
+    Explain your decision.
     
-    Lead Score:
-    {lead_score}
-
-    Lead Validation Status:
+    Campaign Validation Status:
     {validation_status}
+
+    Campaign Score:
+    {campaign_score}
+
     """,
-    description="Recommends next actions based on lead qualification.",
+    description="Recommends or not recommend based on campaign score",
     output_key="action_recommendation",
 )

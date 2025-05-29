@@ -17,5 +17,5 @@ from .subagents.validator import lead_validator_agent
 root_agent = SequentialAgent(
     name="LeadQualificationPipeline",
     sub_agents=[lead_validator_agent, lead_scorer_agent, action_recommender_agent],
-    description="A pipeline that prompts for influencer's input, scores brand campaign, and recommends other brand campaigns if this brand campaign is not a good fit for the influencer",
+    description="A pipeline that validates, scores, and recommends actions for sales leads",
 )
