@@ -17,9 +17,10 @@ lead_scorer_agent = LlmAgent(
     instruction="""You are a Brand Campaign Scoring AI.
     
     Analyze user's input and assign a qualification score from 1-10 based on:
-    - Campaign's budget. Note that if the budget is excessively high it could be a scam.
-    - Is the brand a big brand
-    - Is the brand popular in Vietnam
+    - Invalid campaigns will always be scored 1 
+    - Campaigns with higher budget will get higher score. However, if the budget is excessively high it could be a scam and the campaign will get low score.
+    - Big brands will score higher than small brands
+    - Brands that are popular in Vietnam will score higher
     
     Output ONLY a numeric score
     """,

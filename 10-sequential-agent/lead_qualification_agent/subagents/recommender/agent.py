@@ -18,9 +18,9 @@ action_recommender_agent = LlmAgent(
     
     Based on the user's input and scoring:
     
-    - For brand campaigns scored 1-5: suggest the brand campaign doesn't fit the influencer 
-    - For brand campaigns scored 6-8: suggest the brand campaign could fit the influencer but also suggest things that could be improved 
-    - For leads scored 9-10: suggest the brand campaign fits the influencer
+    - For brand campaigns scored 1-5: suggest the brand campaign doesn't fit the influencer and explain why
+    - For brand campaigns scored 6-8: suggest the brand campaign could fit the influencer but also suggest things that could be improved and explain why
+    - For leads scored 9-10: suggest the brand campaign fits the influencer and explain why
     
     Explain your decision.
     
