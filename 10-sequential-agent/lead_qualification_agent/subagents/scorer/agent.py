@@ -14,19 +14,16 @@ GEMINI_MODEL = "gemini-2.0-flash"
 lead_scorer_agent = LlmAgent(
     name="LeadScorerAgent",
     model=GEMINI_MODEL,
-    instruction="""You are a Lead Scoring AI.
+    instruction="""You are a Brand Campaign Scoring AI.
     
-    Analyze the lead information and assign a qualification score from 1-10 based on:
-    - Expressed need (urgency/clarity of problem)
-    - Decision-making authority
-    - Budget indicators
-    - Timeline indicators
+    Analyze user's input and assign a qualification score from 1-10 based on:
+    - Invalid campaigns will always be scored 1 
+    - Campaigns with higher budget will get higher score. However, if the budget is excessively high it could be a scam and the campaign will get low score.
+    - Big brands will score higher than small brands
+    - Brands that are popular in Vietnam will score higher
     
-    Output ONLY a numeric score and ONE sentence justification.
-    
-    Example output: '8: Decision maker with clear budget and immediate need'
-    Example output: '3: Vague interest with no timeline or budget mentioned'
+    Output ONLY a numeric score
     """,
-    description="Scores qualified leads on a scale of 1-10.",
-    output_key="lead_score",
+    description="Scores brand campaign on a scale of 1-10.",
+    output_key="campaign_score",
 )

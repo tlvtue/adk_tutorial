@@ -1,32 +1,34 @@
 from google.adk.agents import Agent
 from google.adk.tools.agent_tool import AgentTool
 
-from .sub_agents.funny_nerd.agent import funny_nerd
-from .sub_agents.news_analyst.agent import news_analyst
-from .sub_agents.stock_analyst.agent import stock_analyst
-from .tools.tools import get_current_time
+from .sub_agents.fashion_agent.agent import fashion_agent
+from .sub_agents.fnb_agent.agent import fnb_agent
+from .sub_agents.car_agent.agent import car_agent
+
 
 root_agent = Agent(
     name="manager",
     model="gemini-2.0-flash",
     description="Manager agent",
     instruction="""
-    You are a manager agent that is responsible for overseeing the work of the other agents.
-
-    Always delegate the task to the appropriate agent. Use your best judgement 
-    to determine which agent to delegate to.
-
-    You are responsible for delegating tasks to the following agent:
-    - stock_analyst
-    - funny_nerd
+    - Greet the influencer, ask for their experience with brand campaigns
+    - After they answer the previous prompt, ask them on which social media platform are they popular
+    - After they answer the previous prompt, ask them for their price range
+    - After they answer the previous prompt, ask which brand industry they're most interested in
+    - After they answer the previous prompt, ask if there's any brand they want to avoid
+    - After they answer the previous prompt, ask if they want to provide any additional details
+    - After they answer the previous prompt, summarize all information they have provided you
+    - Then delegate the task to the appropriate agent and tool. Use your best judgement to determine which agent to delegate to.
 
     You also have access to the following tools:
-    - news_analyst
-    - get_current_time
+    - fashion_agent
+    - car_agent
+    - fnb_agent
     """,
-    sub_agents=[stock_analyst, funny_nerd],
+    #sub_agents=[stock_analyst, funny_nerd],
     tools=[
-        AgentTool(news_analyst),
-        get_current_time,
+        AgentTool(fashion_agent),
+        AgentTool(fnb_agent),
+        AgentTool(car_agent),
     ],
 )
